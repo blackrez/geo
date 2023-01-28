@@ -61,9 +61,9 @@ $ python
 
 >>> con = duckdb.connect(config={'allow_unsigned_extensions' : 'true'})
 >>> con.load('geo')
->>> result = con.execute("SELECT ST_MAKEPOINT(52.347113,4.869454);")
+>>> result = con.execute("SELECT ST_ASGEOJSON(ST_MAKEPOINT(4.869454, 52.347113));")
 >>> print(result.fetchall())
-[(b'\x01\x01\x00\x00\x00\x1b\x82\xe32n,J@k\x81=&Rz\x13@',)]
+[('{"type":"Point","coordinates":[4.869454,52.347113]}',)]
 ```
 
 
